@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import HorizontalMenu from "./components/HorizontalMenu";
+import VerticalMenu from "./components/VerticalMenu";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App({ children }) {
+	return (
+		<>
+			<VerticalMenu />
+			<div style={{ marginLeft: 230 }}>
+				<HorizontalMenu />
+				<div style={{ height: 64 }}></div>
+				{children}
+			</div>
+		</>
+	);
 }
-
-export default App;

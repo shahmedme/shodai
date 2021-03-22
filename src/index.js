@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import App from "./App";
 import store from "./state/store";
-import "./index.css";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
+import "./index.css";
+import "antd/dist/antd.css";
 
 ReactDOM.render(
 	<React.StrictMode>

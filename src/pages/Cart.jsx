@@ -10,7 +10,7 @@ export default function Cart() {
 	return (
 		<div>
 			{cartItems.length ? (
-				<div className="p-10 flex">
+				<div className="px-7 py-10 flex">
 					<div className="w-3/4 mr-8">
 						<div className="font-semibold text-lg">Shopping Cart</div>
 
@@ -26,16 +26,114 @@ export default function Cart() {
 								</Link>
 							</div>
 							<div className="flex items-center">
-								<p className="text-sm text-gray-700">Subtotal:</p>&nbsp;&nbsp;
-								<h4 className="font-semibold">${subTotal.toFixed(2)}</h4>
+								<p className="text-sm text-gray-700 m-0">Subtotal:</p>
+								&nbsp;&nbsp;
+								<h4 className="font-semibold m-0">${subTotal.toFixed(2)}</h4>
 							</div>
 						</div>
 					</div>
 					<div className="w-1/4">
-						<div className="bg-gray-700 rounded-md p-5">
-							<p style={{ height: 400 }}></p>
-							<div className="flex justify-center">
-								<button className="bg-yellow-200 text-black px-16 py-3 rounded-md font-bold text-sm">
+						<div className="bg-gray-700 rounded-md px-5 py-5">
+							<div>
+								<form className="max-w-xl rounded shadow-xl">
+									<p className="text-white font-xl font-semibold">
+										Customer information
+									</p>
+									<div className="">
+										<input
+											className="w-full p-2 text-gray-700 bg-gray-200 rounded"
+											name="cus_name"
+											type="text"
+											required=""
+											placeholder="Your Name"
+										/>
+									</div>
+									<div className="mt-2">
+										<input
+											className="w-full p-2 text-gray-700 bg-gray-200 rounded"
+											name="cus_email"
+											type="text"
+											required=""
+											placeholder="Your Email"
+											aria-label="Email"
+										/>
+									</div>
+									<div className="mt-2">
+										<input
+											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+											name="cus_email"
+											type="text"
+											required=""
+											placeholder="Street"
+											aria-label="Email"
+										/>
+									</div>
+									<div className="mt-2">
+										<input
+											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+											name="cus_email"
+											type="text"
+											required=""
+											placeholder="City"
+											aria-label="Email"
+										/>
+									</div>
+									<div className="inline-block mt-2 w-1/2 pr-1">
+										<input
+											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+											name="cus_email"
+											type="text"
+											required=""
+											placeholder="Country"
+											aria-label="Email"
+										/>
+									</div>
+									<div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
+										<input
+											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+											name="cus_email"
+											type="text"
+											required=""
+											placeholder="Zip"
+											aria-label="Email"
+										/>
+									</div>
+									<p className="mt-4 text-white font-semibold">
+										Payment information
+									</p>
+									<div className="">
+										<input
+											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+											id="cus_name"
+											name="cus_name"
+											type="text"
+											required=""
+											placeholder="Card Number"
+											aria-label="Name"
+										/>
+									</div>
+									<div className="inline-block mt-2 w-1/2 pr-1">
+										<input
+											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+											name="cus_email"
+											type="text"
+											required=""
+											placeholder="MM/YY"
+										/>
+									</div>
+									<div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
+										<input
+											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+											name="cus_email"
+											type="text"
+											required=""
+											placeholder="CVC"
+										/>
+									</div>
+								</form>
+							</div>
+							<div className="flex justify-center mt-5">
+								<button className="bg-yellow-200 text-black w-full py-3 rounded-md font-bold text-sm focus:outline-none">
 									Pay Now
 								</button>
 							</div>
@@ -47,6 +145,12 @@ export default function Cart() {
 					<h3 className="font-bold">Your Cart is Empty</h3>
 				</div>
 			)}
+
+			<style jsx>{`
+				input:focus {
+					outline: none;
+				}
+			`}</style>
 		</div>
 	);
 }

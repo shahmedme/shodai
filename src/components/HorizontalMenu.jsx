@@ -1,9 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ENABLE_LOGIN_MODE } from "../state/misc";
 
 export default function HorizontalMenu() {
 	const cart = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
+
+	const enableLoginMode = () => {
+		dispatch({ type: ENABLE_LOGIN_MODE });
+	};
 
 	return (
 		<>
@@ -35,19 +41,30 @@ export default function HorizontalMenu() {
 							</Link>
 							<div className="ml-3 relative">
 								<div>
-									<button
-										className="flex items-center text-sm text-gray-500 p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-600 focus:ring-white"
-										id="user-menu"
-										aria-haspopup="true"
-									>
-										<img
-											className="h-8 w-8 rounded-full"
-											src="https://res.cloudinary.com/shakilahmmeed/image/upload/v1608722093/shakilahmed_vhgnib.jpg"
-											alt=""
-										/>
-										<h3 className="font-medium ml-2">Shakil Ahmed</h3>
-										<span className="material-icons">keyboard_arrow_down</span>
-									</button>
+									{true ? (
+										<button
+											className="py-1.5 px-5 bg-yellow-200 rounded font-semibold focus:outline-none"
+											onClick={enableLoginMode}
+										>
+											Login
+										</button>
+									) : (
+										<button
+											className="flex items-center text-sm text-gray-500 p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-600 focus:ring-white"
+											id="user-menu"
+											aria-haspopup="true"
+										>
+											<img
+												className="h-8 w-8 rounded-full"
+												src="https://res.cloudinary.com/shakilahmmeed/image/upload/v1608722093/shakilahmed_vhgnib.jpg"
+												alt=""
+											/>
+											<h3 className="font-medium ml-2">Shakil Ahmed</h3>
+											<span className="material-icons">
+												keyboard_arrow_down
+											</span>
+										</button>
+									)}
 								</div>
 							</div>
 						</div>

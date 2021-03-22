@@ -27,7 +27,7 @@ export default function Cart() {
 							</div>
 							<div className="flex items-center">
 								<p className="text-sm text-gray-700">Subtotal:</p>&nbsp;&nbsp;
-								<h4 className="font-semibold">${subTotal}</h4>
+								<h4 className="font-semibold">${subTotal.toFixed(2)}</h4>
 							</div>
 						</div>
 					</div>

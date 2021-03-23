@@ -6,6 +6,7 @@ import App from "./App";
 import store from "./state/store";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
+import ProductDetail from "./pages/ProductDetail";
 import "./index.css";
 import "antd/dist/antd.css";
 
@@ -17,6 +18,7 @@ ReactDOM.render(
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/cart" component={Cart} />
+						<Route exact path="/product/:slug" component={ProductDetail} />
 					</Switch>
 				</App>
 			</Router>

@@ -43,6 +43,23 @@ export default function cartReducer(state = initialState, action) {
 	}
 }
 
-export const addToCart = (product) => (dispatch, getState) => {
-	console.log("add to cart");
+export const cartAdd = (product) => {
+	return {
+		type: ADD_TO_CART,
+		payload: { ...product, qty: 1 },
+	};
+};
+
+export const cartIncrement = (product, qty) => {
+	return {
+		type: UPDATE_CART,
+		payload: { ...product, qty: qty + 1 },
+	};
+};
+
+export const cartDecrement = (product, qty) => {
+	return {
+		type: UPDATE_CART,
+		payload: { ...product, qty: qty - 1 },
+	};
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { UPDATE_CART } from "../state/cart";
 import Counter from "./Counter";
 
@@ -31,8 +32,12 @@ export default function CartItem({ data }) {
 		<>
 			<div>
 				<div className="flex items-center my-5">
-					<img src={data.image} alt={data.title} className="thumb" />
-					<h3 className="font-semibold w-4/6 ml-5 flex-grow">{data.title}</h3>
+					<Link to={`/product/${data.slug}`}>
+						<img src={data.image} alt={data.title} className="thumb" />
+					</Link>
+					<h3 className="font-semibold w-4/6 ml-5 flex-grow">
+						<Link to={`/product/${data.slug}`}>{data.title}</Link>
+					</h3>
 					<Counter
 						count={data.qty}
 						{...{ handleIncrement, handleDecrement, handleAdjustment }}

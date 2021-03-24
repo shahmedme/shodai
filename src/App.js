@@ -1,10 +1,18 @@
-import React from "react";
-import Footer from "./components/Footer";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+// import Footer from "./components/Footer";
 import HorizontalMenu from "./components/HorizontalMenu";
 import LoginPrompt from "./components/LoginPrompt";
 import VerticalMenu from "./components/VerticalMenu";
+import { loadUser } from "./state/auth";
 
 export default function App({ children }) {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(loadUser());
+	}, []);
+
 	return (
 		<>
 			<VerticalMenu />
@@ -12,7 +20,7 @@ export default function App({ children }) {
 				<HorizontalMenu />
 				<div style={{ height: 64 }}></div>
 				<div className="app-content">{children}</div>
-				<Footer />
+				{/* <Footer /> */}
 			</div>
 			<LoginPrompt />
 			<style>{`
@@ -20,9 +28,9 @@ export default function App({ children }) {
 					color: inherit;
 				}
 
-				.app-content {
-					min-height: calc(100vh - 118px);
-				}
+				// .app-content {
+				// 	min-height: calc(100vh - 118px);
+				// }
 
 				@media screen and (min-width: 1024px) {
 					.app-wrapper {

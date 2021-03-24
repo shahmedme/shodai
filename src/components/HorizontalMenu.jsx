@@ -1,9 +1,29 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Dropdown, Menu } from "antd";
 import { ENABLE_LOGIN_MODE, TOGGLE_SIDEBAR } from "../state/misc";
 
+const menu = (
+	<Menu>
+		<Menu.Item key="0">
+			<Link to="/profile">Profile</Link>
+		</Menu.Item>
+		<Menu.Item key="1">
+			<Link to="/orders">Orders</Link>
+		</Menu.Item>
+		<Menu.Item key="2">
+			<Link to="/settings">Settings</Link>
+		</Menu.Item>
+		<Menu.Divider />
+		<Menu.Item key="3">
+			<Link to="/logout">Logout</Link>
+		</Menu.Item>
+	</Menu>
+);
+
 export default function HorizontalMenu() {
+	const user = useSelector((state) => state.auth.user);
 	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
@@ -52,7 +72,39 @@ export default function HorizontalMenu() {
 							</Link>
 							<div className="ml-3 relative">
 								<div>
-									{true ? (
+									{!user ? (
+										<div className="w-24" />
+									) : user._id ? (
+										<Dropdown overlay={menu} trigger={["click"]}>
+											<div>
+												<button
+													className="hidden lg:flex items-center text-sm text-gray-500 p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-600 focus:ring-white"
+													id="user-menu"
+													aria-haspopup="true"
+												>
+													<img
+														className="h-8 w-8 rounded-full"
+														src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+														alt=""
+													/>
+													<h3 className="font-medium ml-2 mb-0">
+														{user.firstName + " " + user.lastName}
+													</h3>
+													<span className="material-icons">
+														keyboard_arrow_down
+													</span>
+												</button>
+												<div className="text-gray-400 mt-1.5 mr-1 lg:hidden">
+													<span
+														className="material-icons -mt-0.5"
+														style={{ fontSize: 26 }}
+													>
+														account_circle
+													</span>
+												</div>
+											</div>
+										</Dropdown>
+									) : (
 										<>
 											<button
 												className="py-1.5 px-5 bg-yellow-200 rounded font-semibold hidden md:block focus:outline-none"
@@ -60,7 +112,7 @@ export default function HorizontalMenu() {
 											>
 												Login
 											</button>
-											<div className="text-gray-400 mt-0.5 focus:outline-none md:hidden">
+											<div className="text-gray-400 mt-0.5 md:hidden focus:outline-none">
 												<span
 													className="material-icons"
 													style={{ fontSize: 25 }}
@@ -69,22 +121,6 @@ export default function HorizontalMenu() {
 												</span>
 											</div>
 										</>
-									) : (
-										<button
-											className="flex items-center text-sm text-gray-500 p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-600 focus:ring-white"
-											id="user-menu"
-											aria-haspopup="true"
-										>
-											<img
-												className="h-8 w-8 rounded-full"
-												src="https://res.cloudinary.com/shakilahmmeed/image/upload/v1608722093/shakilahmed_vhgnib.jpg"
-												alt=""
-											/>
-											<h3 className="font-medium ml-2">Shakil Ahmed</h3>
-											<span className="material-icons">
-												keyboard_arrow_down
-											</span>
-										</button>
 									)}
 								</div>
 							</div>
@@ -97,7 +133,6 @@ export default function HorizontalMenu() {
 					border-bottom: 1px solid rgba(0, 0, 0, 0.09);
 					position: fixed;
 					top: 0;
-					overflow: hidden;
 					background: white;
 					z-index: 999;
 					width: 100%;

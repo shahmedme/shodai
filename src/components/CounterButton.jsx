@@ -17,7 +17,7 @@ export default function CounterButton({ product }) {
 		<>
 			<div className="flex items-center mt-2 rounded-md overflow-hidden font-semibold hover:bg-yellow-200 hover:border-white focus:outline-none">
 				<button
-					className="px-4 py-2.5 bg-yellow-200 focus:outline-none"
+					className="px-3 lg:px-4 py-2.5 bg-yellow-200 focus:outline-none"
 					onClick={handleDecrement}
 				>
 					-
@@ -26,7 +26,7 @@ export default function CounterButton({ product }) {
 					{product.qty} in bag
 				</span>
 				<button
-					className="px-4 py-2.5 bg-yellow-200 focus:outline-none"
+					className="px-3 lg:px-4 py-2.5 bg-yellow-200 focus:outline-none"
 					onClick={handleIncrement}
 				>
 					+

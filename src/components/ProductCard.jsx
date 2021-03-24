@@ -13,8 +13,8 @@ export default function ProductCard(props) {
 
 	return (
 		<>
-			<div className="max-w-xs rounded overflow-hidden shadow my-2 product">
-				<div className="wrappper h-2/4 overflow-hidden pt-2 px-3">
+			<div className="rounded overflow-hidden shadow my-2 px-3 md:px-4 product">
+				<div className="h-2/5 lg:h-2/4 overflow-hidden pt-2">
 					<Link to={`/product/${props.product.slug}`}>
 						<img
 							className="w-full h-auto thumb"
@@ -27,10 +27,10 @@ export default function ProductCard(props) {
 						/>
 					</Link>
 				</div>
-				<div className="h-2/4 px-4 py-4 flex flex-col">
+				<div className="h-3/5 lg:h-2/4 py-4 flex flex-col">
 					<Link
 						to={`/product/${props.product.slug}`}
-						className="font-semibold text-base mb-2"
+						className="font-semibold text-sm lg:text-base mb-2"
 					>
 						{props.product.title.substr(0, 35)}
 					</Link>
@@ -49,12 +49,24 @@ export default function ProductCard(props) {
 			</div>
 			<style jsx>{`
 				.product {
-					height: 350px;
+					height: 300px;
 				}
 
 				.thumb {
 					height: 100%;
 					object-fit: contain;
+				}
+
+				@media screen and (min-width: 768px) {
+					.product {
+						height: 280px;
+					}
+				}
+
+				@media screen and (min-width: 1024px) {
+					.product {
+						height: 350px;
+					}
 				}
 			`}</style>
 		</>

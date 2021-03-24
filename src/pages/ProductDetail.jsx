@@ -50,9 +50,9 @@ export default function ProductDetail() {
 
 	return (
 		<>
-			<div className="p-10">
-				<div className="flex">
-					<div className="w-2/4 pr-5">
+			<div className="p-5 md:p-10">
+				<div className="flex flex-col md:flex-row">
+					<div className="md:w-2/4 md:pr-5">
 						<div className="shadow rounded p-5 flex justify-center items-center img-wrapper">
 							{product ? (
 								<img src={product.image} alt="" className="thumb" />
@@ -61,7 +61,7 @@ export default function ProductDetail() {
 							)}
 						</div>
 					</div>
-					<div className="w-2/4 pl-5">
+					<div className="md:w-2/4 mt-5 md:mt-0 md:pl-5">
 						{product ? (
 							<div>
 								<h2 className="text-xl font-bold">{product.title}</h2>
@@ -116,13 +116,19 @@ export default function ProductDetail() {
 			</div>
 			<style jsx>{`
 				.img-wrapper {
-					height: 350px;
+					height: 200px;
 				}
 
 				.thumb {
 					height: 100%;
 					width: 100%;
 					object-fit: contain;
+				}
+
+				@media screen and (min-width: 768px) {
+					.img-wrapper {
+						height: 350px;
+					}
 				}
 			`}</style>
 		</>

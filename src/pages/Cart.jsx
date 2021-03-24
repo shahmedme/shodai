@@ -10,8 +10,8 @@ export default function Cart() {
 	return (
 		<div>
 			{cartItems.length ? (
-				<div className="px-7 py-10 flex">
-					<div className="w-3/4 mr-8">
+				<div className="px-7 py-5 lg:py-10 flex flex-col lg:flex-row">
+					<div className="lg:w-3/4 lg:mr-8">
 						<div className="font-semibold text-lg">Shopping Cart</div>
 
 						{cartItems.map((cartItem) => (
@@ -32,110 +32,112 @@ export default function Cart() {
 							</div>
 						</div>
 					</div>
-					<div className="w-1/4">
-						<div className="bg-gray-700 rounded-md px-5 py-5">
-							<div>
-								<form className="max-w-xl rounded shadow-xl">
-									<p className="text-white font-xl font-semibold">
-										Customer information
-									</p>
-									<div className="">
-										<input
-											className="w-full p-2 text-gray-700 bg-gray-200 rounded"
-											name="cus_name"
-											type="text"
-											required=""
-											placeholder="Your Name"
-										/>
-									</div>
-									<div className="mt-2">
-										<input
-											className="w-full p-2 text-gray-700 bg-gray-200 rounded"
-											name="cus_email"
-											type="text"
-											required=""
-											placeholder="Your Email"
-											aria-label="Email"
-										/>
-									</div>
-									<div className="mt-2">
-										<input
-											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-											name="cus_email"
-											type="text"
-											required=""
-											placeholder="Street"
-											aria-label="Email"
-										/>
-									</div>
-									<div className="mt-2">
-										<input
-											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-											name="cus_email"
-											type="text"
-											required=""
-											placeholder="City"
-											aria-label="Email"
-										/>
-									</div>
-									<div className="inline-block mt-2 w-1/2 pr-1">
-										<input
-											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-											name="cus_email"
-											type="text"
-											required=""
-											placeholder="Country"
-											aria-label="Email"
-										/>
-									</div>
-									<div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
-										<input
-											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-											name="cus_email"
-											type="text"
-											required=""
-											placeholder="Zip"
-											aria-label="Email"
-										/>
-									</div>
-									<p className="mt-4 text-white font-semibold">
-										Payment information
-									</p>
-									<div className="">
-										<input
-											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-											id="cus_name"
-											name="cus_name"
-											type="text"
-											required=""
-											placeholder="Card Number"
-											aria-label="Name"
-										/>
-									</div>
-									<div className="inline-block mt-2 w-1/2 pr-1">
-										<input
-											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-											name="cus_email"
-											type="text"
-											required=""
-											placeholder="MM/YY"
-										/>
-									</div>
-									<div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
-										<input
-											className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-											name="cus_email"
-											type="text"
-											required=""
-											placeholder="CVC"
-										/>
-									</div>
-								</form>
-							</div>
-							<div className="flex justify-center mt-5">
-								<button className="bg-yellow-200 text-black w-full py-3 rounded-md font-bold text-sm focus:outline-none">
-									Pay Now
-								</button>
+					<div className="lg:w-1/4 mt-10 lg:mt-0">
+						<div className="payment-wrapper">
+							<div className="bg-gray-700 rounded-md px-5 py-5">
+								<div>
+									<form className="rounded shadow-xl">
+										<p className="text-white font-xl font-semibold">
+											Customer information
+										</p>
+										<div className="">
+											<input
+												className="w-full p-2 text-gray-700 bg-gray-200 rounded"
+												name="name"
+												type="text"
+												required=""
+												placeholder="Your Name"
+											/>
+										</div>
+										<div className="mt-2">
+											<input
+												className="w-full p-2 text-gray-700 bg-gray-200 rounded"
+												name="email"
+												type="text"
+												required=""
+												placeholder="Your Email"
+												aria-label="Email"
+											/>
+										</div>
+										<div className="mt-2">
+											<input
+												className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+												name="street"
+												type="text"
+												required=""
+												placeholder="Street"
+												aria-label="Street"
+											/>
+										</div>
+										<div className="mt-2">
+											<input
+												className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+												name="city"
+												type="text"
+												required=""
+												placeholder="City"
+												aria-label="City"
+											/>
+										</div>
+										<div className="inline-block mt-2 w-1/2 pr-1">
+											<input
+												className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+												name="country"
+												type="text"
+												required=""
+												placeholder="Country"
+												aria-label="Country"
+											/>
+										</div>
+										<div className="inline-block mt-2 pl-1 w-1/2">
+											<input
+												className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+												name="zip"
+												type="text"
+												required=""
+												placeholder="Zip"
+												aria-label="Zip"
+											/>
+										</div>
+										<p className="mt-4 text-white font-semibold">
+											Payment information
+										</p>
+										<div className="">
+											<input
+												className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+												id="cart_num"
+												name="cart_num"
+												type="text"
+												required=""
+												placeholder="Card Number"
+												aria-label="Cart Number"
+											/>
+										</div>
+										<div className="inline-block mt-2 w-1/2 pr-1">
+											<input
+												className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+												name="validity"
+												type="text"
+												required=""
+												placeholder="MM/YY"
+											/>
+										</div>
+										<div className="inline-block mt-2 pl-1 w-1/2">
+											<input
+												className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+												name="cvc"
+												type="text"
+												required=""
+												placeholder="CVC"
+											/>
+										</div>
+									</form>
+								</div>
+								<div className="flex justify-center mt-5">
+									<button className="bg-yellow-200 text-black w-full py-3 rounded-md font-bold text-sm focus:outline-none">
+										Pay Now
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -149,6 +151,11 @@ export default function Cart() {
 			<style jsx>{`
 				input:focus {
 					outline: none;
+				}
+
+				.payment-wrapper {
+					position: sticky;
+					top: 80px;
 				}
 			`}</style>
 		</div>

@@ -32,8 +32,8 @@ function Home() {
 	return (
 		<div>
 			<section className="hero">
-				<div className="py-32 flex justify-center">
-					<form className="w-2/4 relative">
+				<div className="py-20 md:py-32 flex justify-center">
+					<form className="w-3/4 md:w-2/4 relative">
 						<input
 							type="text"
 							placeholder="Search for items or brands"
@@ -46,13 +46,16 @@ function Home() {
 				</div>
 			</section>
 
-			<section className="featured p-4">
-				<h2 className="ml-2 mt-2 font-bold text-2xl text-gray-700">
+			<section className="featured p-2 md:p-4">
+				<h2 className="ml-2 mt-2 font-bold text-xl md:text-2xl text-gray-700">
 					Featured Products
 				</h2>
-				<div className="flex flex-wrap mt-4">
+				<div className="flex flex-wrap md:mt-4">
 					{products.map((product) => (
-						<div key={product._id} className="w-1/4 px-2">
+						<div
+							key={product._id}
+							className="w-2/4 md:w-1/4 lg:w-1/3 xl:w-1/4 px-2"
+						>
 							<ProductCard product={product} />
 						</div>
 					))}

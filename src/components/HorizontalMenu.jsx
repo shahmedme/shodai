@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
-import { ENABLE_LOGIN_MODE, TOGGLE_SIDEBAR } from "../state/misc";
+import {
+	ENABLE_LOGIN_MODE,
+	SET_SEARCH_TERM,
+	TOGGLE_SIDEBAR,
+} from "../state/misc";
 
 const menu = (
 	<Menu>
@@ -23,6 +27,7 @@ const menu = (
 );
 
 export default function HorizontalMenu() {
+	const [searchTerm, setSearchTerm] = useState("");
 	const user = useSelector((state) => state.auth.user);
 	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
@@ -33,6 +38,11 @@ export default function HorizontalMenu() {
 
 	const toggleSidebar = () => {
 		dispatch({ type: TOGGLE_SIDEBAR });
+	};
+
+	const handleSearch = (e) => {
+		e.preventDefault();
+		dispatch({ type: SET_SEARCH_TERM, payload: searchTerm });
 	};
 
 	return (
@@ -46,16 +56,21 @@ export default function HorizontalMenu() {
 							</span>
 						</div>
 						<div className="flex-1 flex items-center sm:items-stretch sm:justify-start">
-							<div className="flex items-center text-gray-400 ml-2 lg:ml-0">
+							<div className="flex items-center flex-grow text-gray-400 ml-2 lg:ml-0">
 								<span className="material-icons mt-1 hidden lg:block">
 									search
 								</span>
-								<input
-									className="w-60 focus:border-gray-300 bg-white h-10 pl-2 pr-10 rounded-lg text-sm focus:outline-none"
-									type="search"
-									name="search"
-									placeholder="Search for items or brands"
-								/>
+								<form className="lg:w-1/2" onSubmit={handleSearch}>
+									<input
+										className="w-full focus:border-gray-300 bg-white h-10 pl-2 pr-10 rounded-lg text-sm focus:outline-none"
+										type="text"
+										name="search"
+										placeholder="Search for items or brands"
+										autoComplete="off"
+										value={searchTerm}
+										onChange={(e) => setSearchTerm(e.target.value)}
+									/>
+								</form>
 							</div>
 						</div>
 						<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

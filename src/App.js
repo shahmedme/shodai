@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router";
 // import Footer from "./components/Footer";
 import HorizontalMenu from "./components/HorizontalMenu";
 import LoginPrompt from "./components/LoginPrompt";
@@ -7,6 +8,7 @@ import VerticalMenu from "./components/VerticalMenu";
 import { loadUser } from "./state/auth";
 
 export default function App({ children }) {
+	const searchTerm = useSelector((state) => state.misc.searchTerm);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -23,6 +25,7 @@ export default function App({ children }) {
 				{/* <Footer /> */}
 			</div>
 			<LoginPrompt />
+			{searchTerm.length ? <Redirect to={`/search?q=${searchTerm}`} /> : null}
 			<style>{`
 				a, a:hover {
 					color: inherit;

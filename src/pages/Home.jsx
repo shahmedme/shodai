@@ -11,23 +11,12 @@ function Home() {
 		coreAxios
 			.get("api/products")
 			.then((res) => {
-				let tempProducts = res.data?.map((item) => {
-					let tempCartItem = cart.find((cartItem) => cartItem._id === item._id);
-
-					if (tempCartItem) {
-						item.qty = tempCartItem.qty;
-					} else {
-						item.qty = 0;
-					}
-
-					return item;
-				});
-				setProducts(tempProducts);
+				setProducts(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, [cart]);
+	}, []);
 
 	return (
 		<div>
@@ -56,7 +45,7 @@ function Home() {
 							key={product._id}
 							className="w-2/4 md:w-1/4 lg:w-1/3 xl:w-1/4 px-2"
 						>
-							<ProductCard product={product} />
+							<ProductCard product={product} cart={cart} />
 						</div>
 					))}
 				</div>

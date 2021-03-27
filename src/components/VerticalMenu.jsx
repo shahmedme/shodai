@@ -52,7 +52,7 @@ export default function VerticalMenu() {
 							{navItems.map((item) => (
 								<li className="mt-3 flex items-center" key={item.slug}>
 									<span className="material-icons mr-1">{item.icon}</span>
-									<Link to={item.slug}>{item.title}</Link>
+									<Link to={"/category/" + item.slug}>{item.title}</Link>
 								</li>
 							))}
 						</ul>

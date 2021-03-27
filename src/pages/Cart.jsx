@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
+import NotFound from "../components/NotFound";
 
 export default function Cart() {
 	const cartItems = useSelector((state) => state.cart);
@@ -144,7 +145,11 @@ export default function Cart() {
 				</div>
 			) : (
 				<div className="p-12">
-					<h3 className="font-bold">Your Cart is Empty</h3>
+					<NotFound
+						msg="Your Cart is Empty"
+						navText="Add Items to Cart"
+						icon="shopping_basket"
+					/>
 				</div>
 			)}
 

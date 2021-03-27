@@ -2,8 +2,7 @@ import Storage from "../utils/storage";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const UPDATE_CART = "UPDATE_CART";
-export const UPDATE = "UPDATE";
-export const DELETE = "DELETE";
+export const CLEAR_CART = "CLEAR_CART";
 
 const initialState = Storage.get("cart") || [];
 
@@ -38,6 +37,10 @@ export default function cartReducer(state = initialState, action) {
 
 			Storage.set("cart", updatedCart);
 			return updatedCart;
+
+		case CLEAR_CART:
+			Storage.remove("cart");
+			return [];
 		default:
 			return state;
 	}
@@ -63,3 +66,7 @@ export const cartDecrement = (product, qty) => {
 		payload: { ...product, qty: qty - 1 },
 	};
 };
+
+export const clearCart = () => ({
+	type: CLEAR_CART,
+});

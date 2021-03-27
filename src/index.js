@@ -14,6 +14,7 @@ import "./index.css";
 import "antd/dist/antd.css";
 import Profile from "./pages/Profile";
 import NotFound404 from "./pages/404";
+import Orders from "./pages/Orders";
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.render(
 						<Route exact path="/cart" component={Cart} />
 						<Route exact path="/product/:slug" component={ProductDetail} />
 						<Route exact path="/category/:categorySlug" component={Category} />
+						<Route exact path="/orders" component={Orders} />
 						<Route exact path="/search" component={SearchResult} />
 						<Route exact path="/profile" component={Profile} />
 						<Route exact path="/logout" component={Logout} />

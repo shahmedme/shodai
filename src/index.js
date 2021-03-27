@@ -13,6 +13,7 @@ import Logout from "./components/Logout";
 import "./index.css";
 import "antd/dist/antd.css";
 import Profile from "./pages/Profile";
+import NotFound404 from "./pages/404";
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -27,6 +28,7 @@ ReactDOM.render(
 						<Route exact path="/search" component={SearchResult} />
 						<Route exact path="/profile" component={Profile} />
 						<Route exact path="/logout" component={Logout} />
+						<Route path="*" component={NotFound404} />
 					</Switch>
 				</App>
 			</Router>

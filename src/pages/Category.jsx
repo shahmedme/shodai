@@ -2,6 +2,7 @@ import { Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import NotFound from "../components/NotFound";
 import ProductCard from "../components/ProductCard";
 import { coreAxios } from "../utils/axios";
 
@@ -32,18 +33,7 @@ export default function Category() {
 						))}
 					</div>
 				) : (
-					<div className="flex justify-center items-center h-96">
-						<div className="text-center">
-							<h1 className="text-2xl">No Product Found :(</h1>
-							<Link
-								to="/"
-								className="px-3 py-2 mt-3 bg-yellow-200 rounded font-semibold inline-flex items-center"
-							>
-								<span className="material-icons">arrow_back</span>
-								<span className="ml-1">Go to Home Page</span>
-							</Link>
-						</div>
-					</div>
+					<NotFound msg="No Product Found :(" />
 				)
 			) : (
 				<div className="h-screen flex items-center justify-center">

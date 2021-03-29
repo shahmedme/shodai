@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { TOGGLE_SIDEBAR } from "../state/misc";
 
 const navItems = [
+	{ title: "All Category", slug: "all", icon: "apps" },
 	{ title: "Baby Care", slug: "baby-care", icon: "child_friendly" },
 	{ title: "Pet Care", slug: "pet-care", icon: "pets" },
 	{ title: "Food", slug: "food", icon: "ramen_dining" },

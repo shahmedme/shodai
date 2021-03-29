@@ -26,7 +26,7 @@ export default function Category() {
 		<div>
 			{products ? (
 				products.length ? (
-					<div className="flex flex-wrap md:mt-4 mx-3">
+					<div className="flex flex-wrap mt-2 md:mt-4 mx-3">
 						{products.map((product) => (
 							<div
 								key={product._id}

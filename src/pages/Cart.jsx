@@ -10,6 +10,7 @@ import { clearCart } from "../state/cart";
 
 export default function Cart() {
 	const cartItems = useSelector((state) => state.cart);
+	const user = useSelector((state) => state.auth.user);
 	const subTotal = cartItems.reduce((a, b) => a + b.price * b.qty, 0);
 	const initialValues = {
 		name: "",
@@ -31,7 +32,9 @@ export default function Cart() {
 			quantity: item.qty,
 		}));
 
-		if (values.street && values.email) {
+		if (!user?._id) {
+			message.error("Please Login First");
+		} else if (values.street && values.email) {
 			coreAxios
 				.post("/api/orders", {
 					shippingAddress: values.street,
@@ -48,7 +51,7 @@ export default function Cart() {
 					console.log(err);
 				});
 		} else {
-			message.error("Please provide customer information");
+			message.error("Please Provide Shipping Information");
 		}
 	};
 
@@ -87,7 +90,7 @@ export default function Cart() {
 									>
 										<Form>
 											<p className="text-white font-xl font-semibold">
-												Customer information
+												Shipping information
 											</p>
 											<div>
 												<Field

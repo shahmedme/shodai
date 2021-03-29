@@ -50,11 +50,13 @@ export default function HorizontalMenu() {
 			<nav>
 				<div className="mx-auto px-3 sm:px-6">
 					<div className="flex items-center justify-between h-16">
-						<div className="lg:hidden text-gray-800">
-							<span className="material-icons mt-2" onClick={toggleSidebar}>
-								menu
-							</span>
-						</div>
+						<button
+							className="lg:hidden text-gray-800 focus:outline-none"
+							onFocus={toggleSidebar}
+							onBlur={toggleSidebar}
+						>
+							<span className="material-icons mt-2">menu</span>
+						</button>
 						<div className="flex-1 flex items-center sm:items-stretch sm:justify-start">
 							<div className="flex items-center flex-grow text-gray-400 ml-2 lg:ml-0">
 								<span className="material-icons mt-1 hidden lg:block">

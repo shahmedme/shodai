@@ -18,11 +18,6 @@ const navItems = [
 
 export default function VerticalMenu() {
 	const sidebarIsOpen = useSelector((state) => state.misc.sidebarIsOpen);
-	const dispatch = useDispatch();
-
-	const toggleSidebar = () => {
-		dispatch({ type: TOGGLE_SIDEBAR });
-	};
 
 	if (sidebarIsOpen) {
 		window.document.body.style.overflow = "hidden";
@@ -57,7 +52,6 @@ export default function VerticalMenu() {
 							))}
 						</ul>
 					</div>
-					<div className="h-screen flex-grow" onClick={toggleSidebar}></div>
 				</div>
 			</div>
 			<style jsx>{`

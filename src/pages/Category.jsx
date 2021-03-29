@@ -16,6 +16,10 @@ export default function Category() {
 			.get(`/api/category/${categorySlug}`)
 			.then((res) => setProducts(res.data))
 			.catch((err) => console.log(err));
+
+		return () => {
+			setProducts();
+		};
 	}, [categorySlug]);
 
 	return (

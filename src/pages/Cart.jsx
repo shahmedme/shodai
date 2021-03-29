@@ -31,21 +31,25 @@ export default function Cart() {
 			quantity: item.qty,
 		}));
 
-		coreAxios
-			.post("/api/orders", {
-				shippingAddress: values.street,
-				orderEmail: values.email,
-				orderItems,
-			})
-			.then((res) => {
-				message.success("Order Created Successfully");
-				dispatch(clearCart());
-				history.push("/orders");
-			})
-			.catch((err) => {
-				message.error("Something wrong while creating order");
-				console.log(err);
-			});
+		if (values.street && values.email) {
+			coreAxios
+				.post("/api/orders", {
+					shippingAddress: values.street,
+					orderEmail: values.email,
+					orderItems,
+				})
+				.then((res) => {
+					message.success("Order Created Successfully");
+					dispatch(clearCart());
+					history.push("/orders");
+				})
+				.catch((err) => {
+					message.error("Something wrong while creating order");
+					console.log(err);
+				});
+		} else {
+			message.error("Please provide customer information");
+		}
 	};
 
 	return (

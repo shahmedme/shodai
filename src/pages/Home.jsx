@@ -1,3 +1,4 @@
+import { Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
@@ -5,7 +6,7 @@ import ProductCard from "../components/ProductCard";
 import { coreAxios } from "../utils/axios";
 
 function Home() {
-	const [products, setProducts] = useState([]);
+	const [products, setProducts] = useState();
 	const [searchTerm, setSearchTerm] = useState("");
 	const [isSearch, setIsSearch] = useState(false);
 	const cart = useSelector((state) => state.cart);
@@ -49,16 +50,22 @@ function Home() {
 				<h2 className="ml-2 mt-2 font-bold text-xl md:text-2xl text-gray-700">
 					Featured Products
 				</h2>
-				<div className="flex flex-wrap md:mt-4">
-					{products.map((product) => (
-						<div
-							key={product._id}
-							className="w-2/4 md:w-1/4 lg:w-1/3 xl:w-1/4 px-2"
-						>
-							<ProductCard product={product} cart={cart} />
-						</div>
-					))}
-				</div>
+				{products ? (
+					<div className="flex flex-wrap md:mt-4">
+						{products.map((product) => (
+							<div
+								key={product._id}
+								className="w-2/4 md:w-1/4 lg:w-1/3 xl:w-1/4 px-2"
+							>
+								<ProductCard product={product} cart={cart} />
+							</div>
+						))}
+					</div>
+				) : (
+					<div className="flex justify-center items-center h-32">
+						<Spin />
+					</div>
+				)}
 			</section>
 
 			{isSearch ? <Redirect to={`/search?q=${searchTerm}`} /> : null}

@@ -127,14 +127,17 @@ export default function HorizontalMenu() {
 											>
 												Login
 											</button>
-											<div className="text-gray-400 mt-0.5 md:hidden focus:outline-none">
+											<button
+												className="text-gray-400 mt-0.5 md:hidden focus:outline-none"
+												onClick={enableLoginMode}
+											>
 												<span
 													className="material-icons"
 													style={{ fontSize: 25 }}
 												>
 													account_circle
 												</span>
-											</div>
+											</button>
 										</>
 									)}
 								</div>

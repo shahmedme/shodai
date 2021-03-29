@@ -15,6 +15,8 @@ import "antd/dist/antd.css";
 import Profile from "./pages/Profile";
 import NotFound404 from "./pages/404";
 import Orders from "./pages/Orders";
+import Settings from "./pages/Settings";
+import PrivateRoute from "./components/PrivateRoute";
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -26,9 +28,10 @@ ReactDOM.render(
 						<Route exact path="/cart" component={Cart} />
 						<Route exact path="/product/:slug" component={ProductDetail} />
 						<Route exact path="/category/:categorySlug" component={Category} />
-						<Route exact path="/orders" component={Orders} />
 						<Route exact path="/search" component={SearchResult} />
-						<Route exact path="/profile" component={Profile} />
+						<PrivateRoute exact path="/orders" component={Orders} />
+						<PrivateRoute exact path="/profile" component={Profile} />
+						<PrivateRoute exact path="/settings" component={Settings} />
 						<Route exact path="/logout" component={Logout} />
 						<Route path="*" component={NotFound404} />
 					</Switch>

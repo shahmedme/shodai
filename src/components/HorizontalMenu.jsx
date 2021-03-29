@@ -7,6 +7,7 @@ import {
 	SET_SEARCH_TERM,
 	TOGGLE_SIDEBAR,
 } from "../state/misc";
+import Storage from "../utils/storage";
 
 const menu = (
 	<Menu>
@@ -30,6 +31,11 @@ export default function HorizontalMenu() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const user = useSelector((state) => state.auth.user);
 	const cart = useSelector((state) => state.cart);
+	const token = Storage.get("token");
+	console.log(
+		"🚀 ~ file: HorizontalMenu.jsx ~ line 35 ~ HorizontalMenu ~ token",
+		token
+	);
 	const dispatch = useDispatch();
 
 	const enableLoginMode = () => {
@@ -50,35 +56,37 @@ export default function HorizontalMenu() {
 			<nav>
 				<div className="mx-auto px-3 sm:px-6">
 					<div className="flex items-center justify-between h-16">
-						<button
-							className="lg:hidden text-gray-800 focus:outline-none"
-							onFocus={toggleSidebar}
-							onBlur={toggleSidebar}
-						>
-							<span className="material-icons mt-2">menu</span>
-						</button>
-						<div className="flex-1 flex items-center sm:items-stretch sm:justify-start">
-							<div className="flex items-center flex-grow text-gray-400 ml-2 lg:ml-0">
-								<span className="material-icons mt-1 hidden lg:block">
-									search
-								</span>
-								<form className="lg:w-1/2" onSubmit={handleSearch}>
-									<input
-										className="w-full focus:border-gray-300 bg-white h-10 pl-2 pr-10 rounded-lg text-sm focus:outline-none"
-										type="text"
-										name="search"
-										placeholder="Search for items or brands"
-										autoComplete="off"
-										value={searchTerm}
-										onChange={(e) => setSearchTerm(e.target.value)}
-									/>
-								</form>
+						<div className="flex flex-grow">
+							<button
+								className="lg:hidden text-gray-800 focus:outline-none"
+								onFocus={toggleSidebar}
+								onBlur={toggleSidebar}
+							>
+								<span className="material-icons mt-2">menu</span>
+							</button>
+							<div className="flex-1 flex items-center sm:items-stretch sm:justify-start">
+								<div className="flex items-center flex-grow text-gray-400 ml-2 lg:ml-0">
+									<span className="material-icons mt-1 hidden lg:block">
+										search
+									</span>
+									<form className="w-full lg:w-1/2" onSubmit={handleSearch}>
+										<input
+											className="w-full h-10 pl-2 pr-5 lg:pr-10 rounded-lg text-sm focus:outline-none"
+											type="text"
+											name="search"
+											placeholder="Search for items or brands"
+											autoComplete="off"
+											value={searchTerm}
+											onChange={(e) => setSearchTerm(e.target.value)}
+										/>
+									</form>
+								</div>
 							</div>
 						</div>
-						<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+						<div className="flex items-center pr-2 sm:ml-6 sm:pr-0">
 							<Link
 								to="/cart"
-								className="md:mr-3 mt-1 text-gray-400 focus:outline-none relative"
+								className="lg:mr-3 mt-1 text-gray-400 focus:outline-none relative"
 							>
 								<span className="material-icons">shopping_cart</span>
 								{cart.length ? (
@@ -89,9 +97,28 @@ export default function HorizontalMenu() {
 							</Link>
 							<div className="ml-3 relative">
 								<div>
-									{!user ? (
-										<div className="w-24" />
-									) : user._id ? (
+									{(!user && !token) ||
+									(user && Object.keys(user).length === 0) ? (
+										<>
+											<button
+												className="text-gray-400 mt-1 mr-1 lg:hidden focus:outline-none"
+												onClick={enableLoginMode}
+											>
+												<span
+													className="material-icons"
+													style={{ fontSize: 25 }}
+												>
+													account_circle
+												</span>
+											</button>
+											<button
+												className="py-1.5 px-5 bg-yellow-200 rounded font-semibold hidden lg:block focus:outline-none"
+												onClick={enableLoginMode}
+											>
+												Login
+											</button>
+										</>
+									) : user?._id ? (
 										<Dropdown overlay={menu} trigger={["click"]}>
 											<div>
 												<button
@@ -111,10 +138,10 @@ export default function HorizontalMenu() {
 														keyboard_arrow_down
 													</span>
 												</button>
-												<div className="text-gray-400 mt-1.5 mr-1 lg:hidden">
+												<div className="text-gray-400 mt-1 mr-1 lg:hidden">
 													<span
-														className="material-icons -mt-0.5"
-														style={{ fontSize: 26 }}
+														className="material-icons"
+														style={{ fontSize: 25 }}
 													>
 														account_circle
 													</span>
@@ -122,25 +149,11 @@ export default function HorizontalMenu() {
 											</div>
 										</Dropdown>
 									) : (
-										<>
-											<button
-												className="py-1.5 px-5 bg-yellow-200 rounded font-semibold hidden md:block focus:outline-none"
-												onClick={enableLoginMode}
-											>
-												Login
-											</button>
-											<button
-												className="text-gray-400 mt-0.5 md:hidden focus:outline-none"
-												onClick={enableLoginMode}
-											>
-												<span
-													className="material-icons"
-													style={{ fontSize: 25 }}
-												>
-													account_circle
-												</span>
-											</button>
-										</>
+										<button className="text-gray-400 mt-1 mr-1  focus:outline-none">
+											<span className="material-icons" style={{ fontSize: 25 }}>
+												account_circle
+											</span>
+										</button>
 									)}
 								</div>
 							</div>

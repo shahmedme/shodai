@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import NotFound404 from "./pages/404";
 import Orders from "./pages/Orders";
 import Settings from "./pages/Settings";
+import Administration from "./pages/Administration";
 import PrivateRoute from "./components/PrivateRoute";
 
 ReactDOM.render(
@@ -33,6 +34,7 @@ ReactDOM.render(
 						<PrivateRoute exact path="/profile" component={Profile} />
 						<PrivateRoute exact path="/settings" component={Settings} />
 						<Route exact path="/logout" component={Logout} />
+						<Route path="/admin" component={Administration} />
 						<Route path="*" component={NotFound404} />
 					</Switch>
 				</App>

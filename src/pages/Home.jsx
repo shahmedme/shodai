@@ -10,6 +10,7 @@ function Home() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [isSearch, setIsSearch] = useState(false);
 	const cart = useSelector((state) => state.cart);
+	const user = useSelector((state) => state.auth.user);
 
 	useEffect(() => {
 		coreAxios

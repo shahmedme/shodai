@@ -32,10 +32,6 @@ export default function HorizontalMenu() {
 	const user = useSelector((state) => state.auth.user);
 	const cart = useSelector((state) => state.cart);
 	const token = Storage.get("token");
-	console.log(
-		"🚀 ~ file: HorizontalMenu.jsx ~ line 35 ~ HorizontalMenu ~ token",
-		token
-	);
 	const dispatch = useDispatch();
 
 	const enableLoginMode = () => {

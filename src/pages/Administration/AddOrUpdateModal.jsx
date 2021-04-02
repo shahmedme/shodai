@@ -85,6 +85,7 @@ export default function AddOrUpdateModal({
 								name={item.name}
 								style={{ marginBottom: 10 }}
 								rules={item.rules}
+								hidden={item.hidden}
 							>
 								<Input placeholder={item.placeholder} />
 							</Form.Item>

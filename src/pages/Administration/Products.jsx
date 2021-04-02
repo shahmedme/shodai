@@ -6,6 +6,12 @@ import AddOrUpdateModal from "./AddOrUpdateModal";
 
 let formItems = [
 	{
+		label: "ID",
+		name: "_id",
+		placeholder: "Product ID",
+		hidden: true,
+	},
+	{
 		label: "Title",
 		name: "title",
 		placeholder: "Product Title",
@@ -106,6 +112,7 @@ export default function Products() {
 			title: "Category",
 			key: "category",
 			dataIndex: "category",
+			render: (category) => category?.title,
 		},
 		{
 			title: "Action",

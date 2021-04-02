@@ -24,6 +24,10 @@ export default function UserLayout({ children }) {
 					color: inherit;
 				}
 
+				.ant-modal-close:focus {
+					outline: none;
+				}
+
 				// .app-content {
 				// 	min-height: calc(100vh - 118px);
 				// }

@@ -24,45 +24,43 @@ const userRoles = ["user"];
 const adminRoles = ["admin", "superadmin"];
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Provider store={store}>
-			<Router>
-				<App>
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/cart" component={Cart} />
-						<Route exact path="/product/:slug" component={ProductDetail} />
-						<Route exact path="/category/:categorySlug" component={Category} />
-						<Route exact path="/search" component={SearchResult} />
-						<PrivateRoute
-							exact
-							path="/orders"
-							permit={userRoles}
-							component={Orders}
-						/>
-						<PrivateRoute
-							exact
-							path="/profile"
-							permit={userRoles}
-							component={Profile}
-						/>
-						<PrivateRoute
-							exact
-							path="/settings"
-							permit={userRoles}
-							component={Settings}
-						/>
-						<Route exact path="/logout" component={Logout} />
-						<PrivateRoute
-							path="/admin"
-							permit={adminRoles}
-							component={Administration}
-						/>
-						<Route path="*" component={NotFound404} />
-					</Switch>
-				</App>
-			</Router>
-		</Provider>
-	</React.StrictMode>,
+	<Provider store={store}>
+		<Router>
+			<App>
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route exact path="/cart" component={Cart} />
+					<Route exact path="/product/:slug" component={ProductDetail} />
+					<Route exact path="/category/:categorySlug" component={Category} />
+					<Route exact path="/search" component={SearchResult} />
+					<PrivateRoute
+						exact
+						path="/orders"
+						permit={userRoles}
+						component={Orders}
+					/>
+					<PrivateRoute
+						exact
+						path="/profile"
+						permit={userRoles}
+						component={Profile}
+					/>
+					<PrivateRoute
+						exact
+						path="/settings"
+						permit={userRoles}
+						component={Settings}
+					/>
+					<Route exact path="/logout" component={Logout} />
+					<PrivateRoute
+						path="/admin"
+						permit={adminRoles}
+						component={Administration}
+					/>
+					<Route path="*" component={NotFound404} />
+				</Switch>
+			</App>
+		</Router>
+	</Provider>,
 	document.getElementById("root")
 );

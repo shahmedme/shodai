@@ -24,9 +24,13 @@ export default function AdminLayout({ children }) {
 					</Content>
 				</Layout>
 			</Layout>
-			<style jsx>{`
+			<style>{`
 				.site-layout-background {
 					background: white;
+				}
+
+				.ant-modal-close:focus {
+					outline: none;
 				}
 			`}</style>
 		</>

@@ -19,6 +19,10 @@ import Settings from "./pages/Settings";
 import Administration from "./pages/Administration";
 import PrivateRoute from "./components/PrivateRoute";
 
+const allRoles = ["user", "admin", "superadmin"];
+const userRoles = ["user"];
+const adminRoles = ["admin", "superadmin"];
+
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
@@ -30,11 +34,30 @@ ReactDOM.render(
 						<Route exact path="/product/:slug" component={ProductDetail} />
 						<Route exact path="/category/:categorySlug" component={Category} />
 						<Route exact path="/search" component={SearchResult} />
-						<PrivateRoute exact path="/orders" component={Orders} />
-						<PrivateRoute exact path="/profile" component={Profile} />
-						<PrivateRoute exact path="/settings" component={Settings} />
+						<PrivateRoute
+							exact
+							path="/orders"
+							permit={userRoles}
+							component={Orders}
+						/>
+						<PrivateRoute
+							exact
+							path="/profile"
+							permit={userRoles}
+							component={Profile}
+						/>
+						<PrivateRoute
+							exact
+							path="/settings"
+							permit={userRoles}
+							component={Settings}
+						/>
 						<Route exact path="/logout" component={Logout} />
-						<Route path="/admin" component={Administration} />
+						<PrivateRoute
+							path="/admin"
+							permit={adminRoles}
+							component={Administration}
+						/>
 						<Route path="*" component={NotFound404} />
 					</Switch>
 				</App>

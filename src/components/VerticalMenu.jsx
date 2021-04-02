@@ -1,23 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-const navItems = [
-	{ title: "All Category", slug: "all", icon: "apps" },
-	{ title: "Baby Care", slug: "baby-care", icon: "child_friendly" },
-	{ title: "Pet Care", slug: "pet-care", icon: "pets" },
-	{ title: "Food", slug: "food", icon: "ramen_dining" },
-	{ title: "Home & Cleaning", slug: "home-cleaning", icon: "bed" },
-	{ title: "Office Products", slug: "office-products", icon: "apartment" },
-	{
-		title: "Beauty & Health",
-		slug: "beauty-health",
-		icon: "health_and_safety",
-	},
-];
+import { coreAxios } from "../utils/axios";
 
 export default function VerticalMenu() {
 	const sidebarIsOpen = useSelector((state) => state.misc.sidebarIsOpen);
+	const [categories, setCategories] = useState([]);
+
+	useEffect(() => {
+		coreAxios
+			.get("api/products/categories")
+			.then((res) => setCategories(res.data))
+			.catch((err) => console.log(err));
+	}, []);
 
 	if (sidebarIsOpen) {
 		window.document.body.style.overflow = "hidden";
@@ -44,7 +39,11 @@ export default function VerticalMenu() {
 							/>
 						</Link>
 						<ul className="navbar mt-6 font-semibold text-gray-600">
-							{navItems.map((item) => (
+							<li className="mt-3 flex items-center">
+								<span className="material-icons mr-1">apps</span>
+								<Link to="/category/all">All Category</Link>
+							</li>
+							{categories.map((item) => (
 								<li className="mt-3 flex items-center" key={item.slug}>
 									<span className="material-icons mr-1">{item.icon}</span>
 									<Link to={"/category/" + item.slug}>{item.title}</Link>

@@ -18,10 +18,15 @@ import Orders from "./pages/Orders";
 import Settings from "./pages/Settings";
 import Administration from "./pages/Administration";
 import PrivateRoute from "./components/PrivateRoute";
+import _JSXStyle from "styled-jsx/style";
 
 const allRoles = ["user", "admin", "superadmin"];
 const userRoles = ["user"];
 const adminRoles = ["admin", "superadmin"];
+
+if (typeof global !== "undefined") {
+	Object.assign(global, { _JSXStyle });
+}
 
 ReactDOM.render(
 	<Provider store={store}>

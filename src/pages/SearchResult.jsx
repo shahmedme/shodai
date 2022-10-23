@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import NotFound from "../components/NotFound";
 import ProductCard from "../components/ProductCard";
 import { coreAxios } from "../utils/axios";

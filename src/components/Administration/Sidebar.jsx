@@ -21,7 +21,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
 			<Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
 				<div className="logo-wrapper">
 					<img
-						src="https://upload.wikimedia.org/wikipedia/en/d/de/Chaldal.com_logo.png"
+						src="https://res.cloudinary.com/shakilahmmeed/image/upload/v1666526108/shodai_jafu1a.png"
 						alt="logo"
 						className="logo"
 					/>

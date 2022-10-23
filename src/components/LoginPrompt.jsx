@@ -85,7 +85,10 @@ export function LoginForm({ togglePromptMode }) {
 					<small>Forgot Password?</small>
 					<div>
 						New to us?{" "}
-						<span className="font-semibold" onClick={togglePromptMode}>
+						<span
+							className="font-semibold cursor-pointer"
+							onClick={togglePromptMode}
+						>
 							Register
 						</span>
 					</div>
@@ -143,7 +146,10 @@ export function RegistrationForm({ togglePromptMode }) {
 				<div className="flex justify-center items-center mt-5">
 					<div>
 						Already have an account?{" "}
-						<span className="font-semibold" onClick={togglePromptMode}>
+						<span
+							className="font-semibold cursor-pointer"
+							onClick={togglePromptMode}
+						>
 							Login
 						</span>
 					</div>

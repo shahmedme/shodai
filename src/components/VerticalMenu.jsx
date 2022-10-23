@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { coreAxios } from "../utils/axios";
+import BagIcon from "../assets/images/shodai.png";
 
 export default function VerticalMenu() {
 	const sidebarIsOpen = useSelector((state) => state.misc.sidebarIsOpen);
@@ -31,19 +32,18 @@ export default function VerticalMenu() {
 					}
 				>
 					<div className="px-5 pt-3 vertical-menu">
-						<Link to="/" className="logo">
-							<img
-								src="https://upload.wikimedia.org/wikipedia/en/d/de/Chaldal.com_logo.png"
-								alt="logo"
-								className="w-3/4"
-							/>
+						<Link
+							to="/"
+							className="font-semibold text-3xl flex items-center justify-center gap-2 logo"
+						>
+							<img src={BagIcon} alt="shodai" className="w-9 h-auto" /> Shodai
 						</Link>
-						<ul className="navbar mt-6 font-semibold text-gray-600">
+						<ul className="navbar mt-7 font-semibold text-gray-600">
 							<li className="mt-3 flex items-center">
 								<span className="material-icons mr-1">apps</span>
 								<Link to="/category/all">All Category</Link>
 							</li>
-							{categories.map((item) => (
+							{categories?.map((item) => (
 								<li className="mt-3 flex items-center" key={item.slug}>
 									<span className="material-icons mr-1">{item.icon}</span>
 									<Link to={"/category/" + item.slug}>{item.title}</Link>

@@ -28,7 +28,7 @@ export default function App({ children }) {
 				<UserLayout children={children} />
 			) : (
 				<div className="h-screen w-screen flex items-center justify-center">
-					<Loader />
+					<Spin />
 				</div>
 			)}
 		</>

@@ -1,8 +1,10 @@
+import { Spin } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import AdminLayout from "./components/Layout/AdminLayout";
 import UserLayout from "./components/Layout/UserLayout";
+import Loader from "./components/Loader";
 import { loadUser } from "./state/auth";
 
 export default function App({ children }) {
@@ -24,7 +26,11 @@ export default function App({ children }) {
 				<AdminLayout children={children} />
 			) : user !== null ? (
 				<UserLayout children={children} />
-			) : null}
+			) : (
+				<div className="h-screen w-screen flex items-center justify-center">
+					<Loader />
+				</div>
+			)}
 		</>
 	);
 }
